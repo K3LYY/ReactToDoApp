@@ -1,10 +1,13 @@
 import { useState } from 'react';
+import type { TTasks } from '../types/task';
 
 interface IHeaderBarProps {
   addTask: (id: number, input: string) => void;
+  tasks: TTasks;
+  clearAll: () => void;
 }
 
-const HeaderBar = ({ addTask }: IHeaderBarProps) => {
+const HeaderBar = ({ addTask, tasks, clearAll }: IHeaderBarProps) => {
   const [input, setInput] = useState<string>('');
   const [count, setCount] = useState<number>(0);
 
@@ -16,14 +19,9 @@ const HeaderBar = ({ addTask }: IHeaderBarProps) => {
   };
 
   return (
-    <>
-      <div className="absolute inset-x-0 top-0 m-10 p-5 bg-[#e0afa0] rounded-md">
-        <h1 className="text-center text-[#463f3a] text-xl font-extrabold">
-          TODO Lista
-        </h1>
-      </div>
+    <div className="flex flex-row justify-strech bg-[#e0afa0] rounded-md m-10 p-5">
       <br />
-      <div className="input-group absolute top-0 left-0 m-10 p-5 text-xl font-extrabold">
+      <div className="input-group w-16 flex-auto text-xl font-extrabold">
         <input
           type="text"
           className="mr-5 text-[#463f3a]"
@@ -31,11 +29,31 @@ const HeaderBar = ({ addTask }: IHeaderBarProps) => {
           value={input}
           onChange={(event) => setInput(event.target.value)}
         />
-        <button onClick={handleAddClick} className="text-[#463f3a]">
+        <button
+          type="button"
+          onClick={handleAddClick}
+          onKeyDown={handleAddClick}
+          className="text-[#463f3a]"
+        >
           Dodaj
         </button>
       </div>
-    </>
+      <div className="w-64 flex-auto bg-[#e0afa0]">
+        <h1 className="text-center text-[#463f3a] text-xl font-extrabold">
+          TODO Lista
+        </h1>
+      </div>
+      <div className="w-16 flex-auto">
+        {tasks.length > 0 && (
+          <button
+            className="clear float-end bg-[#e0afa0] text-red-500 font-extrabold text-xl"
+            onClick={clearAll}
+          >
+            Wyczyść wszystko
+          </button>
+        )}
+      </div>
+    </div>
   );
 };
 

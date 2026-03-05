@@ -56,7 +56,8 @@ const ToDoList = () => {
 
   return (
     <>
-      <HeaderBar addTask={addTask} />
+      <HeaderBar addTask={addTask} clearAll={clearAll} tasks={tasks} />
+
       <TasksList>
         {tasks.map((task) => (
           <ListItem
@@ -68,15 +69,6 @@ const ToDoList = () => {
           />
         ))}
       </TasksList>
-
-      {tasks.length > 0 && (
-        <button
-          className="clear absolute top-0 right-0 bg-[#e0afa0] m-10 p-5 text-red-500 rounded-md font-extrabold text-xl"
-          onClick={clearAll}
-        >
-          Wyczyść wszystko
-        </button>
-      )}
     </>
   );
 };
