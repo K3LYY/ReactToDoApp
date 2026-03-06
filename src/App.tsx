@@ -55,7 +55,7 @@ const ToDoList = () => {
   };
 
   return (
-    <>
+    <div>
       <HeaderBar addTask={addTask} clearAll={clearAll} tasks={tasks} />
 
       <TasksList>
@@ -69,7 +69,7 @@ const ToDoList = () => {
           />
         ))}
       </TasksList>
-    </>
+    </div>
   );
 };
 

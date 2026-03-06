@@ -1,5 +1,19 @@
 @import 'tailwindcss';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-background: #eeeeee;
+  --color-cardBackground: white;
+}
+
+.dark {
+  --color-background: #463f3a;
+  --color-cardBackground: #e0afa0;
+}
+
 body {
-  background-color: #463f3a;
+  margin: 0;
+  background-size: cover;
+  background-color: var(--color-background);
 }

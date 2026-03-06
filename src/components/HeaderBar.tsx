@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { TTasks } from '../types/task';
+import ChangeThemeButton from './ChangeThemeButton';
 
 interface IHeaderBarProps {
   addTask: (id: number, input: string) => void;
@@ -19,7 +20,9 @@ const HeaderBar = ({ addTask, tasks, clearAll }: IHeaderBarProps) => {
   };
 
   return (
-    <div className="flex flex-row justify-strech bg-[#e0afa0] rounded-md m-10 p-5">
+    <div
+      className={`bg-cardBackground flex flex-row justify-strech  rounded-md m-10 p-5`}
+    >
       <br />
       <div className="input-group w-16 flex-auto text-xl font-extrabold">
         <input
@@ -37,8 +40,9 @@ const HeaderBar = ({ addTask, tasks, clearAll }: IHeaderBarProps) => {
         >
           Dodaj
         </button>
+        <ChangeThemeButton />
       </div>
-      <div className="w-64 flex-auto bg-[#e0afa0]">
+      <div className="w-64 flex-auto">
         <h1 className="text-center text-[#463f3a] text-xl font-extrabold">
           TODO Lista
         </h1>
@@ -46,7 +50,7 @@ const HeaderBar = ({ addTask, tasks, clearAll }: IHeaderBarProps) => {
       <div className="w-16 flex-auto">
         {tasks.length > 0 && (
           <button
-            className="clear float-end bg-[#e0afa0] text-red-500 font-extrabold text-xl"
+            className="clear float-end text-red-500 font-extrabold text-xl"
             onClick={clearAll}
           >
             Wyczyść wszystko

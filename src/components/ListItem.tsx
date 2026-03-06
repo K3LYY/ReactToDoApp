@@ -1,3 +1,4 @@
+import '../App.css';
 import { useState } from 'react';
 import type { TTask } from '../types/task';
 
@@ -22,7 +23,9 @@ const ListItem = ({
     setIsEditing(false);
   };
   return (
-    <li className="mt-5 items-center object-center bg-[#e0afa0] rounded-md text-lg text-[#463f3a] font-bold p-5 flex">
+    <li
+      className={`mt-5 items-center object-center bg-cardBackground rounded-md text-lg text-[#463f3a] font-bold p-5 flex`}
+    >
       {isEditing ? (
         <>
           <input
